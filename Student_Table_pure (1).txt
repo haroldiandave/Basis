@@ -1,0 +1,41 @@
+create table student (
+    student_id          varchar2(32) not null primary key,
+    last_name           varchar2(64) not null,
+    first_name          varchar2(64) not null,
+    middle_name         varchar2(64) not null,
+    sex                 varchar2(8),
+    birthday            timestamp(6),
+    religion            varchar2(64),
+    email               varchar2(64),
+    address             varchar2(64),
+    contact_number	varchar2(32));
+
+
+create table school (
+    id                         number(32)not null primary key,
+    student_id                 varchar2(32)not null,
+    school_level               varchar2(32),
+    school_year                varchar2(32),
+    school_name                varchar2(64),
+    foreign key (student_id) references student);
+
+
+create table recognition (
+    id                         number(32)not null primary key,
+    student_id                 varchar2(32)not null,
+    school_awards              varchar2(64),
+    foreign key (student_id) 	references student);
+
+create table family (
+    id                         number(32)not null primary key,
+    student_id                 varchar2(32)not null,
+    last_name                  varchar2(64),
+    first_name                 varchar2(64),
+    middle_name                varchar2(64),
+    birthday                   timestamp(6),
+    relationship               varchar2(16),
+    occupation                 varchar2(32),
+    enrolled_in_rc             number(1),
+    grade_level                varchar2(32),
+    contact_number	       varchar2(32),
+    foreign key (student_id) references student);
